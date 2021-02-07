@@ -27,12 +27,10 @@ const PayPalConnection: ProcessorConnection<
   website: 'https://paypal.com',
 
   configuration: {
+    // TODO: encrypt or save in env-vars
     accountId: 'sb-2a1oc4965682@business.example.com',
-     // '... Paste something here that uniquely identifies the PayPal account',
     clientId: 'AbY73rnq8KzdTJ3YasQVKkD0K2QUqb_76Lz8RIMVKjdkIxUcNXmIQbJ9hciY0bQ6xO2eFKMJiKvoMz2a',
-    //...Paste your sandbox PayPal client ID here...
     clientSecret: 'EN5v_LZwvQodv1wUEpLH49BOZYZjDt84ef0JoUmdfnfMuuRV31p_CH6IqupzzrMsj0KFiqREmOoHHnJ_',
-    //'...Paste your sandbox PayPal client secret here...
   },
 
   /**
@@ -178,7 +176,7 @@ const PayPalConnection: ProcessorConnection<
 
   /**
    * Cancel a PayPal order
-   * Use the HTTPCli  ent and the request information to cancel the PayPal order
+   * Use the HTTPClient and the request information to cancel the PayPal order
    * To cancell an authorized payment: https://developer.paypal.com/docs/api/payments/v2/#authorizations_void
    */
   cancel(
