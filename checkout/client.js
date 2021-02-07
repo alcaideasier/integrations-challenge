@@ -13,7 +13,26 @@ function renderPayPalButton() {
    * that you receive from PayPal
    */
   const options = {
-    /** */
+    /** 
+     * Calls the Paypals Orders API to create a new order and receive its OrderId.
+     * More info: https://developer.paypal.com/docs/checkout/integration-features/auth-capture/
+    */
+    createOrder: function(data, actions) {
+      // Setting up the transaction
+      return actions.order.create({
+        intent: "AUTHORIZE",
+        purchase_units: [{
+          amount: {
+            value: '12.99',
+            currency_code: 'EUR'
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions){
+      // Authorize the transaction.
+      onAuthorizeTransaction(data.orderID)
+    }
   };
 
   window.paypal.Buttons(options).render(button);
